@@ -1,11 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import { View, Text, StyleSheet } from "react-native"
 
-export const Home = () => {
+export const Favourites = () => {
     return (
         <View style={styles.container}>
             <StatusBar style="auto" />
-            <Text>Home Test</Text>
+            <Text>Favourites Home</Text>
         </View>
     )
 }
