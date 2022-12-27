@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "proboard-react-native",
-    "slug": "proboard-react-native",
+    "slug": "proboard",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -18,16 +18,24 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.proboard.app"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.proboard.android"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "288cc03f-ae4c-44f0-aa33-25bb03fb81fd"
+      }
+    },
+    "owner": "rhenmarkc"
   }
 }
