@@ -55,7 +55,7 @@ const DiscoverList = ({ header: Header }: { header: JSX.Element }) => {
             }
         },
         {
-            title: "Make the Cut", keyword: "The Air Zoom GT Cut 2", action: {
+            title: "Make the Cut!", keyword: "The Air Zoom GT Cut 2", action: {
                 label: "Shop Now",
                 url: "/"
             },
