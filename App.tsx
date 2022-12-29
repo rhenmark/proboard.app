@@ -1,14 +1,17 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
 import { AppNavigation } from './navigation';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
 
 
 export default function App() {
+
+  const SafeArea = Platform.OS === "web" ? SafeAreaProvider : SafeAreaView
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeArea style={styles.container}>
       <AppNavigation />
-    </SafeAreaView>
+    </SafeArea>
   );
 }
 
@@ -16,5 +19,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-  },
+  }
 });
