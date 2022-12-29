@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 export const AppNavigation = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName='NykeApp'>
+            <Stack.Navigator>
                 <Stack.Screen name="Proboard" component={Main} />
                 <Stack.Screen name="NykeApp" component={NykeApp} options={{
                     headerShown: false
