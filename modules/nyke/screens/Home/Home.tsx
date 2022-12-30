@@ -3,12 +3,13 @@ import React, { PropsWithChildren, useMemo } from "react";
 import { View, Text, StyleSheet, FlatList, ImageBackground, Button, TouchableOpacity } from "react-native";
 
 type HeaderLabelProps = PropsWithChildren & {
-    title: string
+    title: string,
+    withPadding?: boolean
 }
 
-export const HeaderLabel = ({ children, title }: HeaderLabelProps): JSX.Element => {
+export const HeaderLabel = ({ children, title, withPadding }: HeaderLabelProps): JSX.Element => {
     return (
-        <View>
+        <View style={[withPadding ? styles.headerContainer : {}]}>
             <Text style={[styles.headerTitle]}>{title}</Text>
             {children}
         </View>
@@ -109,6 +110,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff",
+    },
+    headerContainer: {
+        paddingHorizontal: 20,
+        paddingVertical: 40,
     },
     textTitle: {
         textTransform: "uppercase",

@@ -16,7 +16,7 @@ export const Shop = () => {
     return (
         <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.headerContainer}>
-                <HeaderLabel title="Shop" />
+                <HeaderLabel title="Shop" withPadding />
             </View>
             <ShopContent />
         </ScrollView>
@@ -114,7 +114,7 @@ const ContentsSection = ({ contentCategoryName }: ContentSectionProps) => {
                 keyExtractor={(item) => item.title}
                 contentContainerStyle={styles.contentContainer}
                 showsHorizontalScrollIndicator={false}
-                ItemSeparatorComponent={<View style={styles.contentSeparator} />}
+                ItemSeparatorComponent={() => <View style={styles.contentSeparator} />}
             />
 
         </View>
@@ -142,10 +142,6 @@ const styles = StyleSheet.create({
         display: "flex",
         backgroundColor: colors.white,
         height: "100%",
-    },
-    headerContainer: {
-        paddingHorizontal: 20,
-        paddingVertical: 40,
     },
     tabContainer: {
         width: "auto",
