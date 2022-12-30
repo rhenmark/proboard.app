@@ -1,25 +1,16 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useMemo } from "react";
+import React, { PropsWithChildren, useMemo } from "react";
 import { View, Text, StyleSheet, FlatList, ImageBackground, Button, TouchableOpacity } from "react-native";
 
-const HeaderLabel = (): JSX.Element => {
+type HeaderLabelProps = PropsWithChildren & {
+    title: string
+}
 
-    const today = useMemo(() => {
-        const dateOptions: Intl.DateTimeFormatOptions = {
-            weekday: "long",
-            month: "long",
-            day: "numeric",
-        }
-
-        const dateNow = new Date()
-        return dateNow.toLocaleDateString("en-US", dateOptions)
-
-    }, [])
-
+export const HeaderLabel = ({ children, title }: HeaderLabelProps): JSX.Element => {
     return (
         <View>
-            <Text style={[styles.textLg]}>Discover</Text>
-            <Text style={styles.textDateNow}>{today}</Text>
+            <Text style={[styles.headerTitle]}>{title}</Text>
+            {children}
         </View>
     );
 };
@@ -65,10 +56,25 @@ const DiscoverList = ({ header: Header }: { header: JSX.Element }) => {
         },
     ];
 
+    const today = useMemo(() => {
+        const dateOptions: Intl.DateTimeFormatOptions = {
+            weekday: "long",
+            month: "long",
+            day: "numeric",
+        }
+
+        const dateNow = new Date()
+        return dateNow.toLocaleDateString("en-US", dateOptions)
+
+    }, [])
+
     return (
         <FlatList
             data={mockData}
-            ListHeaderComponent={<Header />}
+            initialNumToRender={2}
+            ListHeaderComponent={<Header title="Discover">
+                <Text style={styles.textDateNow}>{today}</Text>
+            </Header>}
             ListHeaderComponentStyle={styles.headerLabelContainer}
             renderItem={({ item }) => {
                 return (
@@ -103,7 +109,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: "#fff",
-        paddingTop: 60,
     },
     textTitle: {
         textTransform: "uppercase",
@@ -113,12 +118,17 @@ const styles = StyleSheet.create({
         fontSize: 32,
         fontWeight: "800",
     },
+    headerTitle: {
+        fontSize: 28,
+        fontWeight: "500"
+    },
     headerLabelContainer: {
         paddingHorizontal: 20,
         paddingVertical: 40,
     },
     discoverCardContainer: {
         height: 400,
+        minHeight: 400,
         width: "100%",
         flex: 1,
         marginVertical: 4,
@@ -143,7 +153,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
         paddingVertical: 12,
         paddingHorizontal: 20,
-        borderRadius: "100%"
+        borderRadius: 20
     },
     btnContainer: {
         alignItems: "flex-start",
