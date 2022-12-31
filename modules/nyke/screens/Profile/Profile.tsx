@@ -1,27 +1,25 @@
-import { Button } from "@rneui/base";
-import { StatusBar } from "expo-status-bar";
+
 import {
     View,
     Text,
     StyleSheet,
-    ScrollView,
     Image,
     TouchableOpacity,
     FlatList,
 } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+// import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import { colors } from "../../../../common/theme/color";
 
 export const Profile = () => {
-    const navigation = useNavigation();
+    // const navigation = useNavigation();
 
-    const handleLogout = () => {
-        navigation.reset({
-            index: 0,
-            routes: [{ name: "Proboard" }],
-        });
-    };
+    // const handleLogout = () => {
+    //     navigation.reset({
+    //         index: 0,
+    //         routes: [{ name: "Proboard" }],
+    //     });
+    // };
 
     return (
         <FlatList
