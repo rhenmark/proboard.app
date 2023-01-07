@@ -1,148 +1,121 @@
-import { Tab, TabView } from "@rneui/base";
-import { useState } from "react";
 import {
     View,
     Text,
     StyleSheet,
-    ScrollView,
     FlatList,
-    ImageBackground,
-    Image
+    Image,
+    TouchableOpacity,
+    ScrollView,
 } from "react-native";
-import { colors } from "../../../../common/theme/color";
+import { colors } from "common/theme/color";
 import { HeaderLabel } from "../Home";
+import { ShopCategory } from "./ShopCategory";
+import { Collection } from "./Collection";
+import { HorizontalCard } from "./HorizontalCard";
+import { data } from "./mock_data";
+import { useState } from "react";
 
 export const Shop = () => {
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.headerContainer}>
-                <HeaderLabel title="Shop" withPadding />
-            </View>
-            <ShopContent />
+        <FlatList
+            contentContainerStyle={styles.container}
+            data={[1]}
+            renderItem={() => {
+                return <ShopContent key={"1"} />;
+            }}
+            ListHeaderComponent={
+                <View>
+                    <HeaderLabel title="Shop" withPadding />
+                </View>
+            }
+            keyExtractor={(_, index) => `${index}`}
+            listKey="shop"
+        />
+    );
+};
+
+const shopCategory: Array<string> = ["Men", "Women", "Kids", "Jordan"];
+type TabSectionProps = {
+    tabs: Array<string>;
+    withItemPadding?: boolean;
+};
+export const TabSection = ({ tabs, withItemPadding }: TabSectionProps) => {
+    const [active, setActive] = useState<string>(tabs[0]);
+
+    const handlePress = (item: string) => setActive(item);
+
+    return (
+        <ScrollView
+            contentContainerStyle={styles.tabSectionContainer}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+        >
+            {tabs.map((item: string, index) => (
+                <TouchableOpacity
+                    key={item}
+                    style={[
+                        styles.tabSectionItem,
+                        withItemPadding ? styles.tabWidthPadding : {},
+                        active === item ? styles.isTabActive : {},
+                    ]}
+                    onPress={() => handlePress(item)}
+                >
+                    <Text style={styles.tabTitle}>{item}</Text>
+                </TouchableOpacity>
+            ))}
         </ScrollView>
     );
 };
 
 const ShopContent = () => {
-    const shopCategory: Array<string> = ["Men", "Women", "Kids", "Jordan"];
-    const [index, setIndex] = useState(0);
-
     return (
-        <>
-            <Tab
-                value={index}
-                onChange={(e) => setIndex(e)}
-                dense
-                containerStyle={styles.tabContainer}
-                indicatorStyle={styles.tabIndicator}
-                scrollable={false}
-            >
-                {shopCategory.map((item: string) => (
-                    <Tab.Item key={item} titleStyle={styles.tabItemTitle}>
-                        {item}
-                    </Tab.Item>
-                ))}
-            </Tab>
-            <TabView value={index} animationType="timing" disableSwipe>
-                {shopCategory.map((item: string) => (
-                    <TabView.Item key={item}>
-                        <ContentsSection contentCategoryName={item} />
-                    </TabView.Item>
-                ))}
-            </TabView>
-        </>
-    );
-};
-
-type ContentSectionProps = {
-    contentCategoryName: string;
-};
-
-const ContentsSection = ({ contentCategoryName }: ContentSectionProps) => {
-    const image =
-        "https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1824,c_limit/c8400ef8-76bd-4c9b-9f66-b1af3ae7ba78/nike-just-do-it.png";
-    const mockShopSection = [
-        {
-            title: "Extra 30% off sale items",
-            image: {
-                url: "",
-            },
-        },
-        {
-            title: "Sneakers of the Week",
-            image: {
-                url: "",
-            },
-        },
-        {
-            title: "Coming Soon: Dunk Jumbo",
-            image: {
-                url: "",
-            },
-        },
-        {
-            title: "New Arrivals",
-            image: {
-                url: "",
-            },
-        },
-        {
-            title: "GT Cut - Level Up",
-            image: {
-                url: "",
-            },
-        },
-    ];
-
-    return (
-        <View style={styles.content}>
-            <CardShopHeader title={"This Weeks's Highlights"} subTitle="Free shipping on all order" />
-            <FlatList
-                horizontal
-                data={mockShopSection}
-                renderItem={({ item }) => {
-                    return (
-                        <View style={styles.contentItemContainer}>
-                            <Image
-                                source={{ uri: item.image.url || image }}
-                                style={styles.sectionImageContent}
-                            />
-                            <Text style={styles.sectionContentTitle}>{item.title}</Text>
-                        </View>
-                    );
-                }}
-                keyExtractor={(item) => item.title}
-                contentContainerStyle={styles.contentContainer}
-                showsHorizontalScrollIndicator={false}
-                ItemSeparatorComponent={() => <View style={styles.contentSeparator} />}
-            />
-
+        <View style={styles.shopContainer}>
+            <TabSection tabs={shopCategory} />
+            <View>
+                <ContentsSection />
+                <ShopCategory />
+                <Collection />
+                <HorizontalCard
+                    data={data.running}
+                    header={{ title: "Find The Right Running Shoes" }}
+                />
+            </View>
         </View>
     );
 };
 
+export const ContentsSection = () => {
+    return (
+        <HorizontalCard
+            data={data.highlights}
+            header={{
+                title: "This Weeks's Highlights",
+                subTitle: "Free shipping on all order",
+            }}
+        />
+    );
+};
 
 type CardShopHeaderProps = {
     title: string;
-    subTitle?: string
-}
+    subTitle?: string;
+};
 
-const CardShopHeader = ({ title, subTitle }: CardShopHeaderProps) => {
+export const CardShopHeader = ({ title, subTitle }: CardShopHeaderProps) => {
     return (
         <View style={styles.cardHeaderContainer}>
             <Text style={styles.cardHeaderTitle}>{title}</Text>
             {subTitle && <Text style={styles.cardHeaderSubTitle}>{subTitle}</Text>}
         </View>
-    )
-}
+    );
+};
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        display: "flex",
         backgroundColor: colors.white,
-        height: "100%",
+        minHeight: "100%",
     },
+    shopContainer: {},
     tabContainer: {
         width: "auto",
     },
@@ -159,13 +132,14 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingVertical: 24,
         paddingHorizontal: 20,
-        flex: 1
+        flex: 1,
     },
     contentContainer: {
-        marginBottom: 24
+        marginBottom: 24,
+        paddingHorizontal: 24,
     },
     contentItemContainer: {
-        width: 160
+        width: 160,
     },
     sectionImageContent: {
         width: 160,
@@ -179,20 +153,43 @@ const styles = StyleSheet.create({
     },
     contentSeparator: {
         height: "100%",
-        width: 4
+        width: 4,
     },
     cardHeaderContainer: {
-        paddingTop: 4,
-        paddingBottom: 24
+        padding: 24,
     },
     cardHeaderTitle: {
-        fontWeight: "bold",
+        fontWeight: "400",
         fontSize: 20,
-        marginBottom: 4
+        marginBottom: 4,
     },
     cardHeaderSubTitle: {
-        opacity: .4,
+        opacity: 0.4,
         fontSize: 20,
-        fontWeight: "bold",
-    }
+        fontWeight: "400",
+    },
+    tabSectionContainer: {
+        flexDirection: "row",
+        minWidth: "100%",
+        borderBottomWidth: 0.2,
+        borderBottomColor: colors.blackSecondary,
+        paddingHorizontal: 20,
+        minHeight: 40,
+        backgroundColor: colors.white,
+    },
+    tabSectionItem: {
+        paddingVertical: 4,
+        paddingBottom: 12,
+        marginRight: 24,
+    },
+    tabWidthPadding: {
+        paddingHorizontal: 12,
+    },
+    isTabActive: {
+        borderBottomWidth: 2,
+        borderBottomColor: colors.black,
+    },
+    tabTitle: {
+        fontSize: 16,
+    },
 });

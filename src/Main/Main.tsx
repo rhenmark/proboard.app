@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native"
 import { Card } from '@rneui/themed';
 import { useNavigation } from '@react-navigation/native';
@@ -15,7 +14,6 @@ export const Main = () => {
 
     return (
         <ScrollView style={styles.container}>
-            <StatusBar style="auto" />
             <TouchableOpacity onPress={handlePress}>
                 <Card containerStyle={styles.cardContainer}>
                     <Text style={styles.textWhite}>Nyke</Text>
@@ -30,8 +28,6 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         padding: 10
-        // alignItems: 'center',
-        // justifyContent: 'center',
     },
     cardContainer: {
         minHeight: 120,

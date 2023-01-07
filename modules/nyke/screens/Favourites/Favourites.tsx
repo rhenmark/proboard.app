@@ -2,7 +2,7 @@ import { StatusBar } from "expo-status-bar";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native"
 import { HeaderLabel } from "../Home";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { colors } from "../../../../common/theme/color";
+import { colors } from "common/theme/color";
 
 
 export const Favourites = () => {

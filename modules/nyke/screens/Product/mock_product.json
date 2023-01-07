@@ -1,0 +1,81 @@
+{
+  "products": [
+    {
+      "name": "Nike Air Zoom Pegasus 36",
+      "sku": "BQ9646-001",
+      "price": 120,
+      "image_url": "https://www.nike.com/image-url-1.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike Air Zoom Pegasus 36 has a responsive Zoom Air unit and a lightweight design for a fast, comfortable run."
+    },
+    {
+      "name": "Nike React Infinity Run Flyknit",
+      "sku": "CU2805-100",
+      "price": 160,
+      "image_url": "https://www.nike.com/image-url-2.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike React Infinity Run Flyknit has a plush foam sole and a Flyknit upper for a comfortable, supportive fit."
+    },
+    {
+      "name": "Nike Air Max 270",
+      "sku": "AO1023-101",
+      "price": 150,
+      "image_url": "https://www.nike.com/image-url-3.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike Air Max 270 has a large Max Air unit and a breathable mesh upper for a comfortable, cushioned ride."
+    },
+    {
+      "name": "Nike Air Force 1",
+      "sku": "CJ0952-001",
+      "price": 110,
+      "image_url": "https://www.nike.com/image-url-4.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike Air Force 1 has a classic design and a cushioned sole for a comfortable, stylish fit."
+    },
+    {
+      "name": "Nike ZoomX Vaporfly NEXT%",
+      "sku": "CJ5290-400",
+      "price": 250,
+      "image_url": "https://www.nike.com/image-url-5.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike ZoomX Vaporfly NEXT% has a responsive ZoomX foam sole and a lightweight design for a fast, efficient run."
+    },
+    {
+      "name": "Nike Joyride Run Flyknit",
+      "sku": "AO1445-001",
+      "price": 140,
+      "image_url": "https://www.nike.com/image-url-6.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike Joyride Run Flyknit has a Flyknit upper and Joyride pods in the sole for a comfortable, cushioned ride."
+    },
+    {
+      "name": "Nike Air Max 270 React",
+      "sku": "CK6190-400",
+      "price": 160,
+      "image_url": "https://www.nike.com/image-url-7.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike Air Max 270 React has a large Max Air unit, a React foam sole, and a breathable mesh upper for a comfortable, responsive ride."
+    },
+    {
+      "name": "Nike Air Max 97",
+      "sku": "921826-002",
+      "price": 160,
+      "image_url": "https://www.nike.com/image-url-8.jpg",
+      "imageKeywords": "nike,shoes,jordan",
+      "description": "The Nike Air Max 97"
+    }
+  ],
+  "category": [
+    "All",
+    "Athletic shoes",
+    "Athletic clothing",
+    "Athletic accessories",
+    "Sports equipment",
+    "Health and fitness products",
+    "Running shoes",
+    "Basketball shoes",
+    "Soccer shoes",
+    "T-shirts",
+    "Pants"
+  ]
+}

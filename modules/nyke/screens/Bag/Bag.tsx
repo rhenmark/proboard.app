@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity } from "react-native"
-import { xStyle } from "../../../../common/styles/styles";
-import { colors } from "../../../../common/theme/color";
+import { xStyle } from "common/styles/styles";
+import { colors } from "common/theme/color";
 import { HeaderLabel } from "../Home";
 import { Picker } from '@react-native-picker/picker';
 import { useState } from "react";
