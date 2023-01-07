@@ -9,7 +9,7 @@ import {
 } from "react-native";
 // import { useNavigation } from "@react-navigation/native";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import { colors } from "../../../../common/theme/color";
+import { colors } from "common/theme/color";
 
 export const Profile = () => {
     // const navigation = useNavigation();
@@ -38,6 +38,7 @@ export const Profile = () => {
                 );
             }}
             contentContainerStyle={styles.container}
+            listKey="profile"
         />
     );
 };
@@ -103,6 +104,7 @@ const ProfileMenu = () => {
                     </>
                 )
             }}
+            listKey="profileSettings"
         />
     );
 };
@@ -138,6 +140,7 @@ const OtherProfileContent = () => {
             )}
             keyExtractor={({ title }) => title}
             contentContainerStyle={styles.listContainer}
+            listKey="profileNotifications"
         />
     );
 };
